@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+
+        /* Image styling */
+        .valentine-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 { color: #d63384; font-size: 2rem; margin-bottom: 30px; }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Space between buttons */
+            height: 50px; /* Reserves space so they don't jump */
+            position: relative;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        
+        #noBtn {
+            background-color: #888;
+            color: white;
+            /* No longer absolute by default to keep it side-by-side initially */
+            transition: 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainCard">
+<img src="IMG_6138.jpg" class="valentine-img" alt="Valentine Image">
+        
+        <h1>Will you be my Valentine? ❤️</h1>
+        
+        <div class="buttons">
+            <button id="yesBtn" onclick="sayYes()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const mainCard = document.getElementById('mainCard');
+
+        function moveButton() {
+            // Once she tries to hover, we switch it to absolute so it can fly away
+            noBtn.style.position = 'absolute';
+            
+            // Calculate random position within the viewport
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        function sayYes() {
+            mainCard.innerHTML = `
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXh6Z3B6Z3B6Z3B6Z3B6Z3B6Z3B6Z3B6Z3B6Z3B6Z3B6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KzM1lAfJpx3FQ3Zkkf/giphy.gif" class="valentine-img">
+<img src="IMG_6147.jpg" class="valentine-img" alt="Valentine Image">
+                        
+<h1>I knew you would say yes! 🥰</h1>
+                <p style="font-size: 1.2rem; color: #ff4d6d;">I love you!</p>
+            `;
+            noBtn.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
